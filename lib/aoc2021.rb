@@ -1,12 +1,6 @@
 
 module Aoc2021
-
-  @@input_dir = ::File.expand_path('../input/2021', __dir__)
-
-  def self.input_dir
-    @@input_dir
-  end
-
+  # hello there
 end
 
 require 'aoc2021/solution'

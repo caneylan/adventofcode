@@ -4,16 +4,14 @@ module Aoc2021
 
     def solve
       {
-        :part1_example => part1('input1-example'),
-        :part1 => part1('input1'),
-        :part2_example => part2('input1-example'),
-        :part2 => part2('input1'),
+        :part1 => part1,
+        :part2 => part2,
       }
     end
     
-    def part1(filename)
+    def part1
       x = y = 0
-      File.foreach(input_path filename) do |line|
+      File.foreach(@filename) do |line|
         direction, n = line.split
         case direction
         when 'forward'
@@ -27,9 +25,9 @@ module Aoc2021
       return x * y
     end
 
-    def part2(filename)
+    def part2
       x = y = aim = 0
-      File.foreach(input_path filename) do |line|
+      File.foreach(@filename) do |line|
         direction, n = line.split
         case direction
         when 'forward'

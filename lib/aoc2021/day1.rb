@@ -4,17 +4,15 @@ module Aoc2021
 
     def solve
       {
-        :part1_example => part1('input1-example'),
-        :part1 => part1('input1'),
-        :part2_example => part2('input1-example'),
-        :part2 => part2('input1'),
+        :part1 => part1,
+        :part2 => part2,
       }
     end
 
-    def part1(filename)
+    def part1
       previous = nil
       n_increased = 0
-      File.foreach(input_path filename) do |line|
+      File.foreach(@filename) do |line|
         current = line.to_i
         if previous && current > previous
           n_increased += 1
@@ -24,10 +22,10 @@ module Aoc2021
       return n_increased
     end
 
-    def part2(filename)
+    def part2
       buffer = [nil, nil, nil]
       n_increased = 0
-      File.foreach(input_path filename) do |line|
+      File.foreach(@filename) do |line|
         buffer << line.to_i
         if head = buffer.shift
           if head + buffer[0] + buffer[1] < buffer[0] + buffer[1] + buffer[2]

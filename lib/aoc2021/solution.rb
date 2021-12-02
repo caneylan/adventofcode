@@ -2,12 +2,14 @@
 module Aoc2021
   class Solution
 
-    def solve
-      raise "not implemented"
+    attr_reader :filename
+
+    def initialize(filename)
+      @filename = filename
     end
 
-    def input_path(filename)
-      "#{Aoc2021.input_dir}/#{self.class.to_s.split('::').last.downcase}/#{filename}"
+    def solve
+      raise "not implemented"
     end
 
   end

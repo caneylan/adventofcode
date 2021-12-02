@@ -6,28 +6,19 @@ RSpec.describe Aoc2021 do
     it { is_expected.to be_a(Module) }
   end
 
-  context "input_dir" do
-    it "defines input_dir" do
-      expect(Aoc2021.input_dir).to be_a(String)
-    end
-    it "defines an input_dir that exists" do
-      expect(Aoc2021.input_dir).to satisfy { |d| ::File.directory?(d) }
-    end
-  end
-
   context "Solution" do
     it "defines a Solution parent class" do
-      s = Aoc2021::Solution.new
+      s = Aoc2021::Solution.new('foo')
       expect(s).to_not be_nil
     end
+    it "defines an accessor for provided filename" do
+      s = Aoc2021::Solution.new('foo')
+      expect(s.filename).to eq('foo')
+    end
     it "provides a solve method stub that needs to be implemented" do
-      s = Aoc2021::Solution.new
+      s = Aoc2021::Solution.new('foo')
       expect(s).to respond_to(:solve)
       expect { s.solve }.to raise_error("not implemented")
-    end
-    it "provides a input_path method" do
-      s = Aoc2021::Solution.new
-      expect(s).to respond_to(:input_path)
     end
   end
 
@@ -41,7 +32,7 @@ RSpec.describe Aoc2021 do
         c.is_a?(Class)
       }.each { |c|
         expect(c).to be < Aoc2021::Solution
-        s = c.new
+        s = c.new('foo')
         expect(s).to_not be_nil
       }
     end
