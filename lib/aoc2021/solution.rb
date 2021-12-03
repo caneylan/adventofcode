@@ -2,10 +2,10 @@
 module Aoc2021
   class Solution
 
-    attr_reader :filename
+    attr_reader :input
 
     def initialize(filename)
-      @filename = filename
+      @input = File.readlines(filename).map(&:strip)
     end
 
     def solve

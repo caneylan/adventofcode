@@ -23,7 +23,7 @@ RSpec.describe Aoc2021::Day1 do
       :part1 => 1292,
       :part2 => 1262,
     )
-    puts :day1_solution => solutions.inspect
+    #puts :day1_solution => solutions.inspect
   end
 
 end

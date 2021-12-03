@@ -11,7 +11,7 @@ module Aoc2021
     
     def part1
       x = y = 0
-      File.foreach(@filename) do |line|
+      input.each do |line|
         direction, n = line.split
         case direction
         when 'forward'
@@ -27,7 +27,7 @@ module Aoc2021
 
     def part2
       x = y = aim = 0
-      File.foreach(@filename) do |line|
+      input.each do |line|
         direction, n = line.split
         case direction
         when 'forward'

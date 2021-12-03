@@ -12,7 +12,7 @@ module Aoc2021
     def part1
       previous = nil
       n_increased = 0
-      File.foreach(@filename) do |line|
+      input.each do |line|
         current = line.to_i
         if previous && current > previous
           n_increased += 1
@@ -25,7 +25,7 @@ module Aoc2021
     def part2
       buffer = [nil, nil, nil]
       n_increased = 0
-      File.foreach(@filename) do |line|
+      input.each do |line|
         buffer << line.to_i
         if head = buffer.shift
           if head + buffer[0] + buffer[1] < buffer[0] + buffer[1] + buffer[2]
