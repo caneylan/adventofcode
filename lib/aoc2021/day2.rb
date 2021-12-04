@@ -2,14 +2,7 @@
 module Aoc2021
   class Day2 < Solution
 
-    def solve
-      {
-        :part1 => part1,
-        :part2 => part2,
-      }
-    end
-    
-    def part1
+    def part1!
       x = y = 0
       input.each do |line|
         direction, n = line.split
@@ -25,7 +18,7 @@ module Aoc2021
       return x * y
     end
 
-    def part2
+    def part2!
       x = y = aim = 0
       input.each do |line|
         direction, n = line.split

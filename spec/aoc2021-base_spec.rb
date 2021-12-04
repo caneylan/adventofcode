@@ -16,10 +16,15 @@ RSpec.describe Aoc2021 do
       s = Aoc2021::Solution.new(test_filename)
       expect(s.input).to eq(['hello there'])
     end
-    it "provides a solve method stub that needs to be implemented" do
+    it "provides a part1! method stub that needs to be implemented" do
       s = Aoc2021::Solution.new(test_filename)
-      expect(s).to respond_to(:solve)
-      expect { s.solve }.to raise_error("not implemented")
+      expect(s).to respond_to(:part1!)
+      expect { s.part1! }.to raise_error("not implemented")
+    end
+    it "provides a part2! method stub that needs to be implemented" do
+      s = Aoc2021::Solution.new(test_filename)
+      expect(s).to respond_to(:part2!)
+      expect { s.part2! }.to raise_error("not implemented")
     end
   end
 

@@ -2,14 +2,7 @@
 module Aoc2021
   class Day3 < Solution
 
-    def solve
-      {
-        :part1 => part1,
-        :part2 => part2,
-      }
-    end
-    
-    def part1
+    def part1!
       mask = Array.new(input.first.length, 0)
       input.each do |line|
         line.each_char.with_index do |c, i|
@@ -23,7 +16,7 @@ module Aoc2021
       return gamma.join.to_i(2) * epsilon.join.to_i(2)
     end
 
-    def part2
+    def part2!
       o2_rating = filter_data(input, 0) { |i, n| i * 2 >= n }
       co2_rating = filter_data(input, 0) { |i, n| i * 2 < n }
       return o2_rating * co2_rating

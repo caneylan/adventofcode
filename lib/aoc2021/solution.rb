@@ -8,7 +8,11 @@ module Aoc2021
       @input = File.readlines(filename).map(&:strip)
     end
 
-    def solve
+    def part1!
+      raise "not implemented"
+    end
+
+    def part2!
       raise "not implemented"
     end
 
