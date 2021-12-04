@@ -33,8 +33,6 @@ RSpec.describe Aoc2021 do
         c.is_a?(Class)
       }.each { |c|
         expect(c).to be < Aoc2021::Solution
-        s = c.new(test_filename)
-        expect(s).to_not be_nil
       }
     end
   end
