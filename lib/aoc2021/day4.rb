@@ -19,7 +19,7 @@ module Aoc2021
     def get_winners
       winners = []
       @boards.each do |board|
-        board.each do |row|
+        next unless board.each do |row|
           winners << board and break if row.count { |x| x[:drawn] } == @board_size
         end
         0.upto(@board_size - 1) do |col_index|
