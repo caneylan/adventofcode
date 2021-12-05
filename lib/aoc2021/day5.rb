@@ -14,12 +14,12 @@ module Aoc2021
 
         next unless a_x == b_x || a_y == b_y if skip_diagonals
 
-        begin
+        loop do
           vent_lines[a_x][a_y] += 1
+          break if a_x == b_x && a_y == b_y
           a_x += x_step
           a_y += y_step
-        end until a_x == b_x && a_y == b_y
-        vent_lines[a_x][a_y] += 1
+        end
       end
 
       return vent_lines.map { |x, col| col.count { |y, v| v > 1 } }.sum
