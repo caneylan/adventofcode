@@ -3,11 +3,11 @@ module Aoc2021
   class Day6 < Solution
 
     def fish_simulation!(days)
-      # fish_school maps the reproduce-day of fish on day 0 to how many such fish there are for adults
-      fish_school = Hash.new { |h, k| h[k] = 0 }
-
       # fish cycle from 0 to 6, reproducing on the last day
       fish_school_cycle_cap = 7
+
+      # fish_school maps the reproduce-day of fish on day 0 to how many such fish there are for adults
+      fish_school = Array.new(fish_school_cycle_cap, 0)
 
       # children need 2 extra days before they enter their reproductive cycle
       fish_children = { :one_day_away => 0, :two_days_away => 0 }
@@ -30,7 +30,7 @@ module Aoc2021
         fish_school[last_spawn] += new_adults
       end
 
-      return fish_school.values.sum + fish_children.values.sum
+      return fish_school.sum + fish_children.values.sum
     end
 
   end
