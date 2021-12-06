@@ -20,7 +20,6 @@ module Aoc2021
         # rotate the children
         new_adults = fish_children_one_day_away
         fish_children_one_day_away = fish_children_two_days_away
-        fish_children_two_days_away = 0
 
         # fish on day 6 reproduce
         last_spawn = (fish_school_cycle_cap + day - 1) % fish_school_cycle_cap
