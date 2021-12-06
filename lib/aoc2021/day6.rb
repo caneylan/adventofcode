@@ -10,7 +10,7 @@ module Aoc2021
       fish_school = Array.new(fish_school_cycle_cap, 0)
 
       # children need 2 extra days before they enter their reproductive cycle
-      fish_children = { :one_day_away => 0, :two_days_away => 0 }
+      fish_children_one_day_away = fish_children_two_days_away = 0
 
       # initialize the school
       input.first.split(',').each { |fish| fish_school[fish.to_i] += 1 }
@@ -18,19 +18,19 @@ module Aoc2021
       # simulate!
       (1..days).each do |day|
         # rotate the children
-        new_adults = fish_children[:one_day_away]
-        fish_children[:one_day_away] = fish_children[:two_days_away]
-        fish_children[:two_days_away] = 0
+        new_adults = fish_children_one_day_away
+        fish_children_one_day_away = fish_children_two_days_away
+        fish_children_two_days_away = 0
 
         # fish on day 6 reproduce
         last_spawn = (fish_school_cycle_cap + day - 1) % fish_school_cycle_cap
-        fish_children[:two_days_away] = fish_school[last_spawn]
+        fish_children_two_days_away = fish_school[last_spawn]
 
         # add new adults into the reproductive cycle
         fish_school[last_spawn] += new_adults
       end
 
-      return fish_school.sum + fish_children.values.sum
+      return fish_school.sum + fish_children_one_day_away + fish_children_two_days_away
     end
 
   end
