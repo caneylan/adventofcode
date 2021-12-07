@@ -36,20 +36,20 @@ RSpec.describe Aoc2021::Day${day} do
     expect(day.part1!).to eq(false)
   end
 
-  it "solves part 1" do
-    day = Aoc2021::Day${day}.new ::File.expand_path("../input/2021/day${day}/input1", __dir__)
-    expect(day.part1!).to eq(false)
-  end
+  #it "solves part 1" do
+  #  day = Aoc2021::Day${day}.new ::File.expand_path("../input/2021/day${day}/input1", __dir__)
+  #  expect(day.part1!).to eq(false)
+  #end
 
-  it "solves part 2 example" do
-    day = Aoc2021::Day${day}.new ::File.expand_path("../input/2021/day${day}/input1-example", __dir__)
-    expect(day.part2!).to eq(false)
-  end
+  #it "solves part 2 example" do
+  #  day = Aoc2021::Day${day}.new ::File.expand_path("../input/2021/day${day}/input1-example", __dir__)
+  #  expect(day.part2!).to eq(false)
+  #end
 
-  it "solves part 2" do
-    day = Aoc2021::Day${day}.new ::File.expand_path("../input/2021/day${day}/input1", __dir__)
-    expect(day.part2!).to eq(false)
-  end
+  #it "solves part 2" do
+  #  day = Aoc2021::Day${day}.new ::File.expand_path("../input/2021/day${day}/input1", __dir__)
+  #  expect(day.part2!).to eq(false)
+  #end
 
 end
 EOF
