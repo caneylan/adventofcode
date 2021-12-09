@@ -9,7 +9,7 @@ module Aoc2021
     def get_neighbors(y, x)
       neighbors = []
       neighbors << [y - 1, x] if y > 0
-      neighbors << [y, x - 1] if x  > 0
+      neighbors << [y, x - 1] if x > 0
       neighbors << [y, x + 1] if x < @grid[y].length - 1
       neighbors << [y + 1, x] if y < @grid.length - 1
       return neighbors
@@ -41,8 +41,8 @@ module Aoc2021
         points_to_check = [point]
         loop do
           p = points_to_check.pop or break
-          unless seen["#{p[0]},#{p[1]}"]
-            seen["#{p[0]},#{p[1]}"] = true
+          unless seen[p]
+            seen[p] = true
             if @grid[p[0]][p[1]] < 9
               size += 1
               points_to_check += get_neighbors(p[0], p[1])
