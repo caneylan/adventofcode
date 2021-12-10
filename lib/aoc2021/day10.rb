@@ -21,11 +21,9 @@ module Aoc2021
         line.chars.each do |c|
           if @@chunk_map[c]
             stack.push(c)
-          else
-            if @@chunk_map[stack.pop] != c
-              sum += point_map[c]
-              break
-            end
+          elsif @@chunk_map[stack.pop] != c
+            sum += point_map[c]
+            break
           end
         end
       end
