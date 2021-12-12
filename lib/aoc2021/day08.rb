@@ -1,5 +1,5 @@
 module Aoc2021
-  class Day8 < Solution
+  class Day08 < Solution
     @@code_map = {
       "abcefg" => "0",
       "cf" => "1",

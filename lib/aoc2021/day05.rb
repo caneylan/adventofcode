@@ -1,6 +1,6 @@
 
 module Aoc2021
-  class Day5 < Solution
+  class Day05 < Solution
 
     def map_vents(skip_diagonals = false)
       vent_lines = Hash.new { |h, k| h[k] = Hash.new(0) }

@@ -1,6 +1,6 @@
 
 module Aoc2021
-  class Day6 < Solution
+  class Day06 < Solution
 
     def fish_simulation!(days)
       # fish cycle from 0 to 6, reproducing on the last day

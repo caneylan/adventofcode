@@ -1,5 +1,5 @@
 module Aoc2021
-  class Day7 < Solution
+  class Day07 < Solution
 
     def part1!
       positions = input.first.split(',').map(&:to_i).sort

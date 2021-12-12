@@ -1,6 +1,6 @@
 
 module Aoc2021
-  class Day3 < Solution
+  class Day03 < Solution
 
     def part1!
       mask = Array.new(input.first.length, 0)

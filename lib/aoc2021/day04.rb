@@ -1,6 +1,6 @@
 
 module Aoc2021
-  class Day4 < Solution
+  class Day04 < Solution
 
     def initialize(filename)
       super(filename)

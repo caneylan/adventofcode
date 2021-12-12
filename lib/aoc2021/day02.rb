@@ -1,6 +1,6 @@
 
 module Aoc2021
-  class Day2 < Solution
+  class Day02 < Solution
 
     def part1!
       x = y = 0

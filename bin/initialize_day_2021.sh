@@ -7,6 +7,8 @@ if ! egrep -q '^[0-9]+$' <<< "$day" ; then
   exit 1
 fi
 
+day=$(printf "%02d" $day)
+
 touch input/2021/day${day}/input1
 touch input/2021/day${day}/input1-example
 

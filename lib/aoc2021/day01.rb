@@ -1,6 +1,6 @@
 
 module Aoc2021
-  class Day1 < Solution
+  class Day01 < Solution
 
     def part1!
       previous = nil
