@@ -14,33 +14,6 @@ module Aoc2021
       end
     end
 
-    # ~0.8s for all tests
-    # depth-first iterative; accumulates new data-structures
-    def cave_search_iter(allow_dupe = false)
-      complete_paths = 0
-      incomplete_paths = [ { :last => :start } ]
-      loop do
-        break if incomplete_paths.empty?
-        path = incomplete_paths.pop
-        @caves[path[:last]].each do |to|
-          if to == :end
-            complete_paths += 1
-          elsif @upcase_lookup[to] || ! path[to]
-            new_path = path.clone
-            new_path[:last] = to
-            new_path[to] = true
-            incomplete_paths << new_path
-          elsif allow_dupe && path[:dupe].nil?
-            new_path = path.clone
-            new_path[:last] = to
-            new_path[:dupe] = to
-            incomplete_paths << new_path
-          end
-        end
-      end
-      return complete_paths
-    end
-
     # ~0.32s for all tests
     # depth-first recursive; one re-used data-structure
     def cave_search_recur(from, allow_dupe = false, seen = {})
@@ -62,12 +35,10 @@ module Aoc2021
     end
 
     def part1!
-      #cave_search_iter
       cave_search_recur(:start)
     end
 
     def part2!
-      #cave_search_iter(true)
       cave_search_recur(:start, true)
     end
   end
