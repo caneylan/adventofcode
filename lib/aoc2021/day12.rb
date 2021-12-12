@@ -15,8 +15,8 @@ module Aoc2021
     end
 
     # ~0.8s for all tests
-    # breadth-first iterative; accumulates new data-structures
-    def cave_search_bf(start_path, allow_dupe = false)
+    # depth-first iterative; accumulates new data-structures
+    def cave_search_iter(start_path, allow_dupe = false)
       complete_paths = 0
       incomplete_paths = [ start_path ]
       loop do
@@ -43,7 +43,7 @@ module Aoc2021
 
     # ~0.35s for all tests
     # depth-first recursive; one re-used data-structure
-    def cave_search_df(path, allow_dupe = false)
+    def cave_search_recur(path, allow_dupe = false)
       complete_paths = 0
       @caves[path[:last]].each do |to|
         if to == :end
@@ -52,14 +52,14 @@ module Aoc2021
           old_last = path[:last]
           path[:last] = to
           path[to] = true
-          complete_paths += cave_search_df(path, allow_dupe)
+          complete_paths += cave_search_recur(path, allow_dupe)
           path[:last] = old_last
           path[to] = nil
         elsif allow_dupe && path[:dupe].nil?
           old_last = path[:last]
           path[:last] = to
           path[:dupe] = to
-          complete_paths += cave_search_df(path, allow_dupe)
+          complete_paths += cave_search_recur(path, allow_dupe)
           path[:last] = old_last
           path[:dupe] = nil
         end
@@ -68,11 +68,11 @@ module Aoc2021
     end
 
     def part1!
-      cave_search_df({ :last => :start })
+      cave_search_recur({ :last => :start })
     end
 
     def part2!
-      cave_search_df({ :last => :start }, true)
+      cave_search_recur({ :last => :start }, true)
     end
   end
 
