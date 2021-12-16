@@ -3,21 +3,21 @@ module Aoc2021
 
     def initialize(filename)
       super(filename)
-      @stream = input.first.chars.map { |c| "%04d" % c.to_i(16).to_s(2) }.join('').chars
+      @stream = input.first.chars.map { |c| "%04d" % c.to_i(16).to_s(2) }.join('')
     end
 
     def parse_packet!
       packet = {}
-      packet[:version] = @stream.shift(3).join('').to_i(2)
+      packet[:version] = @stream.slice!(0..2).to_i(2)
       packet[:version_sum] = packet[:version]
-      packet[:type] = @stream.shift(3).join('').to_i(2)
+      packet[:type] = @stream.slice!(0..2).to_i(2)
       packet[:is_operator] = packet[:type] != 4
       packet[:length] = 6
       if packet[:is_operator]
         packet[:payload] = []
-        packet[:payload_length_type] = @stream.shift(1).first.to_i
+        packet[:payload_length_type] = @stream.slice!(0).to_i
         if packet[:payload_length_type] == 0
-          packet[:payload_length] = @stream.shift(15).join('').to_i(2)
+          packet[:payload_length] = @stream.slice!(0..14).to_i(2)
           packet[:length] += 16 + packet[:payload_length]
           parsed_length = 0
           loop do
@@ -27,7 +27,7 @@ module Aoc2021
             break if parsed_length >= packet[:payload_length]
           end
         else
-          packet[:payload_count] = @stream.shift(11).join('').to_i(2)
+          packet[:payload_count] = @stream.slice!(0..10).to_i(2)
           packet[:length] += 12
           packet[:payload_count].times do
             packet[:payload] << parse_packet!
@@ -38,12 +38,12 @@ module Aoc2021
       else
         packet[:value] = []
         loop do
-          has_more_data = @stream.shift(1).first == '1'
-          packet[:value] << @stream.shift(4)
+          has_more_data = @stream.slice!(0) == '1'
+          packet[:value] << @stream.slice!(0..3)
           packet[:length] += 5
           break unless has_more_data
         end
-        packet[:value] = packet[:value].flatten.join('').to_i(2)
+        packet[:value] = packet[:value].join('').to_i(2)
       end
 
       return packet
