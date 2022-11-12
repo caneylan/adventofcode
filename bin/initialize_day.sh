@@ -33,7 +33,7 @@ module Aoc${year}
 end
 EOF
 
-cat > spec/aoc${year}-day${day}_spec.rb <<EOF
+cat > spec/${year}/aoc${year}-day${day}_spec.rb <<EOF
 require 'aoc${year}'
 
 RSpec.describe Aoc${year}::Day${day} do

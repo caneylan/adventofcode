@@ -4,9 +4,9 @@ Advent of Code in Ruby while attempting to use rspec.
 
 See:
 
-https://adventofcode.com
-http://rspec.info/documentation
-https://relishapp.com/rspec
+- https://adventofcode.com
+- http://rspec.info/documentation
+- https://relishapp.com/rspec
 
 # setup
 
@@ -20,9 +20,9 @@ To test the whole project, run:
 
 To test a particular year, run:
 
-    rspec --format doc spec/aoc2021-*
+    rspec --format doc spec/2021/aoc2021-*
 
 To test a particular day, run:
 
-    rspec --format doc spec/aoc2021-day2_spec.rb
+    rspec --format doc spec/2021/aoc2021-day2_spec.rb
 
