@@ -4,7 +4,7 @@ day=$1
 year=$2
 [ -z "$year" ] && year=$(date +%Y)
 
-if ! egrep -q '^[0-9]+$' <<< "$day" ; then
+if ! grep -Eq '^[0-9]{1,2}$' <<< "$day" || ! grep -Eq '^[0-9]{4}$' <<< "$year" ; then
   echo "usage: $0 <day_number> [year]"
   echo "  if year is not specified, then the current year is used"
   exit 1
@@ -12,9 +12,11 @@ fi
 
 day=$(printf "%02d" $day)
 
+mkdir -p input/${year}/day${day}
 touch input/${year}/day${day}/input1
 touch input/${year}/day${day}/input1-example
 
+mkdir lib/aoc${year}
 cat > lib/aoc${year}/day${day}.rb <<EOF
 module Aoc${year}
   class Day${day} < Solution
