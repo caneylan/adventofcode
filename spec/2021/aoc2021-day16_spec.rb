@@ -3,7 +3,7 @@ require 'aoc2021'
 RSpec.describe Aoc2021::Day16 do
 
   it "parses packet example 1" do
-    day = Aoc2021::Day16.new ::File.expand_path("../input/2021/day16/input1-example", __dir__)
+    day = Aoc2021::Day16.new ::File.expand_path("../../input/2021/day16/input1-example", __dir__)
     expect(day.parse_packet!).to eq({
       :version => 6,
       :version_sum => 6,
@@ -15,7 +15,7 @@ RSpec.describe Aoc2021::Day16 do
   end
 
   it "parses packet example 2" do
-    day = Aoc2021::Day16.new ::File.expand_path("../input/2021/day16/input1-example2", __dir__)
+    day = Aoc2021::Day16.new ::File.expand_path("../../input/2021/day16/input1-example2", __dir__)
     expect(day.parse_packet!).to eq({
       :version => 1,
       :version_sum => 9,
@@ -32,7 +32,7 @@ RSpec.describe Aoc2021::Day16 do
   end
 
   it "parses packet example 3" do
-    day = Aoc2021::Day16.new ::File.expand_path("../input/2021/day16/input1-example3", __dir__)
+    day = Aoc2021::Day16.new ::File.expand_path("../../input/2021/day16/input1-example3", __dir__)
     expect(day.parse_packet!).to eq({
       :version => 7,
       :version_sum => 14,
@@ -50,27 +50,27 @@ RSpec.describe Aoc2021::Day16 do
   end
 
   it "solves part 1 example 4" do
-    day = Aoc2021::Day16.new ::File.expand_path("../input/2021/day16/input1-example4", __dir__)
+    day = Aoc2021::Day16.new ::File.expand_path("../../input/2021/day16/input1-example4", __dir__)
     expect(day.part1!).to eq(16)
   end
 
   it "solves part 1" do
-    day = Aoc2021::Day16.new ::File.expand_path("../input/2021/day16/input1", __dir__)
+    day = Aoc2021::Day16.new ::File.expand_path("../../input/2021/day16/input1", __dir__)
     expect(day.part1!).to eq(852)
   end
 
   it "solves part 2 example 1" do
-    day = Aoc2021::Day16.new ::File.expand_path("../input/2021/day16/input2-example1", __dir__)
+    day = Aoc2021::Day16.new ::File.expand_path("../../input/2021/day16/input2-example1", __dir__)
     expect(day.part2!).to eq(3)
   end
 
   it "solves part 2 example 2" do
-    day = Aoc2021::Day16.new ::File.expand_path("../input/2021/day16/input2-example2", __dir__)
+    day = Aoc2021::Day16.new ::File.expand_path("../../input/2021/day16/input2-example2", __dir__)
     expect(day.part2!).to eq(1)
   end
 
   it "solves part 2" do
-    day = Aoc2021::Day16.new ::File.expand_path("../input/2021/day16/input1", __dir__)
+    day = Aoc2021::Day16.new ::File.expand_path("../../input/2021/day16/input1", __dir__)
     expect(day.part2!).to eq(19348959966392)
   end
 
