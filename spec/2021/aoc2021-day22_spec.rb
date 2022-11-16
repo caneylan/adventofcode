@@ -24,7 +24,7 @@ RSpec.describe Aoc2021::Day22 do
 
   it "solves part 2" do
     day = Aoc2021::Day22.new ::File.expand_path("../../input/2021/day22/input1", __dir__)
-    expect(day.part2!).to eq(false)
+    expect(day.part2!).to eq(1134088247046731)
   end
 
 end
