@@ -2,21 +2,38 @@
 
 day=$1
 year=$2
-[ -z "$year" ] && year=$(date +%Y)
+
+if [ -z "$year" ]; then
+  year=$(date +%Y)
+fi
+if [ -z "$day" ]; then
+  if [ -d input/${year} ]; then
+    last_day=$(find input/${year}/ -maxdepth 1 -regex '.*/day[0-9]*$' | sort | tail -n1 | sed 's,.*/day,,')
+    if [ -n "$last_day" ]; then
+      day=$(($last_day+1))
+    fi
+  fi
+  if [ -z "$day" ]; then
+    day=1
+  fi
+fi
 
 if ! grep -Eq '^[0-9]{1,2}$' <<< "$day" || ! grep -Eq '^[0-9]{4}$' <<< "$year" ; then
-  echo "usage: $0 <day_number> [year]"
+  echo "usage: $0 [day_number] [year]"
   echo "  if year is not specified, then the current year is used"
   exit 1
 fi
 
 day=$(printf "%02d" $day)
+echo ":: initializing for year $year, day $day"
 
 mkdir -p input/${year}/day${day}
+mkdir -p spec/${year}
+mkdir -p lib/aoc${year}
+
 touch input/${year}/day${day}/input1
 touch input/${year}/day${day}/input1-example
 
-mkdir lib/aoc${year}
 cat > lib/aoc${year}/day${day}.rb <<EOF
 module Aoc${year}
   class Day${day} < Solution
