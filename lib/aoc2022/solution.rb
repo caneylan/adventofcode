@@ -10,7 +10,6 @@ module Aoc2022
     end
 
     def parse_input
-      raise "not implemented"
     end
 
     def part1!
