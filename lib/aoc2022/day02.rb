@@ -10,6 +10,10 @@ module Aoc2022
 
     @@beat_by_map = @@beat_map.invert
 
+    def parse_input
+      @steps = input.map(&:split)
+    end
+
     def score_matchup(theirs, yours)
       if theirs == yours
         3
@@ -25,12 +29,11 @@ module Aoc2022
     end
 
     def part1!
-      input.map { |line| a, b = line.split ; score_round(a, (b.ord - 23).chr) }.sum
+      @steps.map { |theirs, yours| score_round(theirs, (yours.ord - 23).chr) }.sum
     end
 
     def part2!
-      input.map do |line|
-        theirs, outcome = line.split
+      @steps.map do |theirs, outcome|
         yours = if outcome == 'X'    # lose
                   @@beat_map[theirs]
                 elsif outcome == 'Y' # draw
