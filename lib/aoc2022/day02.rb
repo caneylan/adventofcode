@@ -8,11 +8,7 @@ module Aoc2022
       'C' => 'B',
     }
 
-    @@beat_by_map = {
-      'A' => 'B',
-      'B' => 'C',
-      'C' => 'A',
-    }
+    @@beat_by_map = @@beat_map.invert
 
     def score_matchup(theirs, yours)
       if theirs == yours
