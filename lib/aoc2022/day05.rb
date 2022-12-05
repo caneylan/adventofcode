@@ -4,7 +4,7 @@ module Aoc2022
 
     def parse_input
       stack_count_index = input.index { |line| line =~ /^(\s+\d+\s+)+$/ }
-      stack_count = input[stack_count_index].strip.split(/\s+/).size
+      stack_count = input[stack_count_index].split.size
 
       @stacks = Array.new(stack_count) { Array.new }
       @moves = []
