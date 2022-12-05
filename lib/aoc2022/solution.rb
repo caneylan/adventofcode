@@ -4,8 +4,9 @@ module Aoc2022
 
     attr_reader :input
 
-    def initialize(filename)
-      @input = File.readlines(filename).map(&:strip)
+    def initialize(filename, opts = {})
+      @input = File.readlines(filename)
+      @input = @input.map(&:strip) unless opts[:no_strip_input]
       parse_input
     end
 
