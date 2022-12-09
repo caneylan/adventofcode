@@ -8,7 +8,7 @@ if [ -z "$year" ]; then
 fi
 if [ -z "$day" ]; then
   if [ -d input/${year} ]; then
-    last_day=$(find input/${year}/ -maxdepth 1 -regex '.*/day[0-9]*$' | sort | tail -n1 | sed 's,.*/day,,')
+    last_day=$(find input/${year}/ -maxdepth 1 -regex '.*/day[0-9]*$' | sort | tail -n1 | sed 's,.*/day,,' | sed 's/^0*//')
     if [ -n "$last_day" ]; then
       day=$(($last_day+1))
     fi
