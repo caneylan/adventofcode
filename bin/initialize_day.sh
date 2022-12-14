@@ -129,3 +129,5 @@ end
 EOF
 fi
 
+git status
+
