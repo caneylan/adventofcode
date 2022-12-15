@@ -20,7 +20,7 @@ module Aoc2022
       ranges = ranges.sort { |a, b| a.begin != b.begin ? a.begin <=> b.begin : a.end <=> b.end }
       i = 0
       while i < ranges.length - 1
-        if ranges[i].end >= ranges[i+1].begin
+        if ranges[i].end >= ranges[i+1].begin - 1
           ranges[i] = (ranges[i].begin..[ranges[i].end, ranges[i+1].end].max)
           ranges.delete_at(i+1)
         else
@@ -45,7 +45,7 @@ module Aoc2022
     end
 
     def part2!(limit)
-      0.upto(limit) do |y|
+      limit.downto(0) do |y|
         empty = empty_ranges(y)
         range = empty.find { |r| r.include?(0) }
         return (range.end + 1) * 4000000 + y  unless range.include?(limit)
