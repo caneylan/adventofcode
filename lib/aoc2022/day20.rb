@@ -32,7 +32,7 @@ module Aoc2022
       shifts = n.value.abs
       loop do
         shifts = shifts % @num_ids.length + shifts / @num_ids.length
-        break if shifts <= @num_ids.length
+        break if shifts < @num_ids.length
       end
       return if shifts == 0
 
