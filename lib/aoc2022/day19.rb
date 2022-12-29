@@ -26,7 +26,6 @@ module Aoc2022
       @max_geodes = Hash[ @blueprints.keys.map { |id| [id, 0] } ]
     end
 
-    # this could be implemented
     def factory_options(blueprint, bots, resources, time_left)
       options = []
       options << { :bot => :geobot, 
