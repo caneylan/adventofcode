@@ -94,7 +94,7 @@ module Aoc${year}
   # hello there
 end
 
-require 'aoc${year}/solution'
+require_relative File.join(__dir__, 'aoc${year}', 'solution.rb')
 Dir[File.join(__dir__, 'aoc${year}', 'day*.rb')].each { |day| require day }
 
 EOF
@@ -108,13 +108,18 @@ module Aoc${year}
 
     attr_reader :input
 
-    def initialize(filename)
-      @input = File.readlines(filename).map(&:strip)
+    def initialize(filename, opts = {})
+      @input = File.readlines(filename)
+      @input = @input.map(&:strip) unless opts[:no_strip_input]
+      @is_example = opts[:is_example]
       parse_input
     end
 
     def parse_input
-      raise "not implemented"
+    end
+
+    def is_example?
+      @is_example
     end
 
     def part1!
