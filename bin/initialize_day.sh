@@ -136,5 +136,6 @@ end
 EOF
 fi
 
+git add -A
 git status
 
