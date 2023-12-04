@@ -4,8 +4,8 @@ module Aoc2023
 
     def parse_input
       @match_counts = input.map do |line|
-        winners, matches = line.sub(/Card.*:\s+/, '').split(/\s+\|\s+/).map(&:split)
-        (winners & matches).length
+        winners, mine = line.sub(/Card.*:\s+/, '').split(/\s+\|\s+/).map(&:split)
+        (winners & mine).length
       end
     end
 
