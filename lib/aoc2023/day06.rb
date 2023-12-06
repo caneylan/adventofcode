@@ -4,7 +4,7 @@ module Aoc2023
 
     def parse_input
       @times = input[0].sub(/.*:\s+/, '').split.map(&:to_i)
-      @dists = input[1].sub(/.*:\s+/, '').split.map { |d| d.to_i }
+      @dists = input[1].sub(/.*:\s+/, '').split.map(&:to_i)
     end
 
     def possible_times(distance, total_time)
