@@ -34,7 +34,7 @@ module Aoc2023
 
     def value_cards_with_jokers(cards)
       joker_count = cards.count('J')
-      return value_cards(cards) if joker_count == 0
+      return value_cards(cards) if joker_count == 0 # this actually isn't necessary
 
       base_cards = cards.select { |c| c != 'J' }
       @non_jokers.map do |card|
