@@ -21,17 +21,12 @@ module Aoc2023
     end
 
     def part1!
-      input.map do |og_nums|
-        seqs = expand_seq_until_zeros(og_nums)
-        (seqs.length - 2).downto(0).map do |i|
-          seqs[i].last
-        end.sum
-      end.sum
+      input.map { |seq| expand_seq_until_zeros(seq).map(&:last).sum }.sum
     end
 
     def part2!
-      input.map do |og_nums|
-        seqs = expand_seq_until_zeros(og_nums)
+      input.map do |seq|
+        seqs = expand_seq_until_zeros(seq)
         n = 0
         (seqs.length - 2).downto(0).map do |i|
           n = seqs[i].first - n
