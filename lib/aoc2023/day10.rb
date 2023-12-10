@@ -152,16 +152,14 @@ module Aoc2023
       @graph = new_graph
 
       # flood fill the outside to a value that's not nil
-      seen = Hash.new { |h, k| h[k] = {} }
       search_q = [ [0,0] ]
       until search_q.empty?
         y, x = search_q.pop
-        seen[y][x] = true
         @graph[y][x] = '*'
-        search_q << [y-1, x] if y > 0 && @graph[y-1][x].nil? && !seen[y-1][x]
-        search_q << [y+1, x] if y < @graph.length - 1 && @graph[y+1][x].nil? && !seen[y+1][x]
-        search_q << [y, x-1] if x > 0 && @graph[y][x-1].nil? && !seen[y][x-1]
-        search_q << [y, x+1] if x < @graph[0].length - 1 && @graph[y][x+1].nil? && !seen[y][x+1]
+        search_q << [y-1, x] if y > 0 && @graph[y-1][x].nil?
+        search_q << [y+1, x] if y < @graph.length - 1 && @graph[y+1][x].nil?
+        search_q << [y, x-1] if x > 0 && @graph[y][x-1].nil?
+        search_q << [y, x+1] if x < @graph[0].length - 1 && @graph[y][x+1].nil?
       end
 
       # un-make wider
