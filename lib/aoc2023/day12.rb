@@ -30,7 +30,7 @@ module Aoc2023
     end
 
     def part2!
-      input.each_with_index.map do |line, i|
+      input.map do |line|
         state, pattern = line.split
         state = "#{state}?#{state}?#{state}?#{state}?#{state}"
         pattern = "#{pattern},#{pattern},#{pattern},#{pattern},#{pattern}"
