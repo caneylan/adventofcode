@@ -46,7 +46,7 @@ module Aoc2023
       # walk until all are allowed or rejected
       until flows.empty?
         flow = flows.shift
-        default_rule = { :rules => flow[:rules].map(&:clone), :dest => @sort_rules[flow[:dest]][:default] }
+        default_rule = { :rules => flow[:rules], :dest => @sort_rules[flow[:dest]][:default] }
         flip_log = []
         @sort_rules[flow[:dest]][:rules].each do |(k, op, v, d)|
           if d == 'A'
