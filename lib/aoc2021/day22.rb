@@ -1,6 +1,8 @@
 module Aoc2021
   class Day22 < Solution
 
+    require_relative '../cuboid.rb'
+
     # an incredibly smart solution exists here: https://github.com/ahorner/advent-of-code/blob/main/lib/2021/22.rb
     # below is my own re-attempt a year later, having long forgotten what the above did
 
@@ -21,11 +23,11 @@ module Aoc2021
       cube_steps = @steps.map do |step|
                      [
                        step[0],
-                       Cuboid.new(
+                       Cuboid.new([
                          limit ? [limit.min, step[1]].max..[limit.max, step[2]].min : step[1]..step[2],
                          limit ? [limit.min, step[3]].max..[limit.max, step[4]].min : step[3]..step[4],
                          limit ? [limit.min, step[5]].max..[limit.max, step[6]].min : step[5]..step[6],
-                       )
+                       ])
                      ]
                    end.select { |c| c[1].size > 0 }
 
@@ -68,66 +70,6 @@ module Aoc2021
 
     def part2!
       return active_cubes
-    end
-
-    class Cuboid
-
-      attr_reader :x, :y, :z
-      
-      def initialize(x, y, z)
-        @x = x
-        @y = y
-        @z = z
-      end
-
-      def size
-        @x.size * @y.size * @z.size
-      end
-
-      # if self and other intersect, then return the cubes of self
-      # that remain with other taken away
-      def -(other)
-        return nil unless x.min <= other.x.max && x.max >= other.x.min &&
-                          y.min <= other.y.max && y.max >= other.y.min &&
-                          z.min <= other.z.max && z.max >= other.z.min
-        new_cubes = []
-
-        # starting dimension doesn't matter
-        # we only need the intersection ranges for the first two dimensions we cut along
-        z_intersect = [z.min, other.z.min].max..[z.max, other.z.max].min
-        y_intersect = [y.min, other.y.min].max..[y.max, other.y.max].min
-       
-        # chop off the bit of self that's above and/or below other in the z-axis
-        if z.max > other.z.max
-          new_cubes << Cuboid.new(x, y, (other.z.max + 1)..z.max)
-        end
-        if z.min < other.z.min
-          new_cubes << Cuboid.new(x, y, z.min..(other.z.min - 1))
-        end
-
-        # chop off the remaining bit of self that's above and/or below other in the y-axis
-        if y.max > other.y.max
-          new_cubes << Cuboid.new(x, (other.y.max + 1)..y.max, z_intersect)
-        end
-        if y.min < other.y.min
-          new_cubes << Cuboid.new(x, y.min..(other.y.min - 1), z_intersect)
-        end
-
-        # chop off what's left of self that's above and/or below other in the x-axis
-        if x.max > other.x.max
-          new_cubes << Cuboid.new((other.x.max + 1)..x.max, y_intersect, z_intersect)
-        end
-        if x.min < other.x.min
-          new_cubes << Cuboid.new(x.min..(other.x.min - 1), y_intersect, z_intersect)
-        end
-
-        return new_cubes
-      end
-
-      def to_s
-        "cubeoid(#{size})[x=#{@x}, y=#{@y}, z=#{@z}]"
-      end
-
     end
 
   end
