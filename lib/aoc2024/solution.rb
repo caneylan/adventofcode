@@ -7,6 +7,7 @@ module Aoc2024
     def initialize(filename, opts = {})
       @input = File.readlines(filename)
       @input = @input.map(&:strip) unless opts[:no_strip_input]
+      @input = @input.map(&:chars) if opts[:char_array]
       @is_example = opts[:is_example]
       parse_input
     end
