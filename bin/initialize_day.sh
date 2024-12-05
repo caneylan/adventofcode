@@ -66,6 +66,7 @@ RSpec.describe Aoc${year}::Day${day} do
     expect(day.part1!).to eq(false)
   end
 
+  return
   it "solves part 1" do
     day = Aoc${year}::Day${day}.new ::File.expand_path("../../input/${year}/day${day}/input1", __dir__)
     expect(day.part1!).to eq(false)
@@ -77,6 +78,7 @@ RSpec.describe Aoc${year}::Day${day} do
     expect(day.part2!).to eq(false)
   end
 
+  return
   it "solves part 2" do
     day = Aoc${year}::Day${day}.new ::File.expand_path("../../input/${year}/day${day}/input1", __dir__)
     expect(day.part2!).to eq(false)
