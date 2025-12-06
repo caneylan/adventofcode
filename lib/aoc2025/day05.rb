@@ -20,32 +20,19 @@ module Aoc2025
       end
     end
 
-    def smash(input_ranges)
-      new_ranges = []
-      while input_ranges.any?
-        left = []
-        merge_me = input_ranges.shift
-        input_ranges.each do |r|
-          if r.min <= merge_me.max && r.max >= merge_me.min
-            merge_me = [r.begin, merge_me.begin].min .. [r.end, merge_me.end].max
-          else
-            left << r
-          end
-        end
-        new_ranges << merge_me
-        input_ranges = left
-      end
-      new_ranges
-    end
-
     def part2!
-      final_ranges = @ranges
-      loop do
-        new_ranges = smash(final_ranges.clone)
-        break if new_ranges.size == final_ranges.size
-        final_ranges = new_ranges
+      @ranges.sort! { |a, b| a.min <=> b.min }
+      curr = @ranges.shift
+      sum = 0
+      @ranges.each do |r|
+        if r.min <= curr.max
+          curr = curr.min .. [curr.max, r.max].max
+        else
+          sum += curr.size
+          curr = r
+        end
       end
-      final_ranges.sum { |r| r.size }
+      sum + curr.size
     end
 
   end
